@@ -1,9 +1,9 @@
 // Gloval
-export const home = (req, res) => res.render("home");
-export const search = (req, res) => res.send("Search");
+export const home = (req, res) => res.render("Home", {pageTitle:"Home"});
+export const search = (req, res) => res.send("Search", {pageTitle:"Search"});
 //VIDEOS
-export const videos = (req,res) => res.send("Videos");
-export const upload = (req,res) => res.send("Upload");
-export const videoDetail = (req,res) => res.send("VideoDetail");
-export const editVideo = (req,res) => res.send("EditVideo");
-export const deleteVideo = (req,res) => res.send("DeleteVideo");
+export const videos = (req,res) => res.send("Videos",{pageTitle:"Videos"});
+export const upload = (req,res) => res.send("Upload",{pageTitle:"Upload"});
+export const videoDetail = (req,res) => res.send("VideoDetail",{pageTitle:"Video Detail"});
+export const editVideo = (req,res) => res.send("EditVideo",{pageTitle:"Edit Video"});
+export const deleteVideo = (req,res) => res.send("DeleteVideo",{pageTitle:"Delete Video"});
