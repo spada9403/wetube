@@ -1,22 +1,22 @@
 // Gloval
 import routes from "../routes";
 import Video from "../models/Video";
-export const home = async(req, res) => {
+export const home = async (req, res) => {
     try{
         const videos = await Video.find({});
         res.render("Home", {pageTitle:"Home",videos});
     } catch(error){
         console.log(error);
-        res.render("Home", {pageTitle:"Home",videos:[]});
+        res.render("Home", {pageTitle:"Home",videos: [] });
     }
 }
 export const search = (req, res) => {
     const {query:{term: searchingBy}} = req;
-    res.render("Search", {pageTitle:"Search", searchingBy, videos});
+    res.render("Search", {pageTitle:"Search", searchingBy, video});
 }
 //VIDEOS
 export const getUpload = (req,res) => res.render("upload",{pageTitle:"Upload"});
-export const postUpload = async(req, res) => {
+export const postUpload = async (req, res) => {
     const {
         body:{
             title,
@@ -29,6 +29,7 @@ export const postUpload = async(req, res) => {
         title,
         description
     });
+    console.log(newVideo);
     res.redirect(routes.videoDetail(newVideo.id));
 };
 export const videoDetail = (req,res) => res.render("videoDetail",{pageTitle:"Video Detail"});
