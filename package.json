@@ -10,6 +10,7 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "autoprefixer": "^10.0.1",
+    "axios": "^0.21.0",
     "babel-loader": "^8.1.0",
     "body-parser": "^1.19.0",
     "connect-mongo": "^3.2.0",
@@ -39,7 +40,7 @@
   "scripts": {
     "dev:server": "nodemon --exec babel-node init.js --delay 2 --ignore '.scss' 'static' ",
     "dev:assets": "cross-env WEBPACK_ENV=development webpack -w",
-    "build:assets": "cross-env WEBPACK_ENV=production webpack"
+    "build:assets": "cross-env WEBPACK_ENV=production webpack -w"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
