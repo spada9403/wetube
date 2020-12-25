@@ -23,7 +23,7 @@ const app = express();
 
 app.use(helmet());
 app.set("view engine","pug");
-app.set("views", path.join(__dirname, "views"));
+app.set("views",path.join(__dirname,"views"))
 app.use("/uploads", express.static(path.join(__dirname,"uploads")));
 app.use("/static", express.static(path.join(__dirname,"static")));
 app.use(cookieparser());
