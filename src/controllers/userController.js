@@ -4,7 +4,7 @@ import User from "../models/User";
 
 // Gloval
 export const getJoin = (req, res) => {
-    res.render("Join", {pageTitle:"Join"});
+    res.render("join", {pageTitle:"Join"});
 };
 export const postJoin = async (req, res, next) =>{
     const {
@@ -14,7 +14,7 @@ export const postJoin = async (req, res, next) =>{
     } = req;
     if(password !== password2){
         res.status(400);
-        res.render("Join", {pageTitle:"Join"});
+        res.render("join", {pageTitle:"Join"});
     } else {
         try{
             const user = await User({
@@ -29,7 +29,7 @@ export const postJoin = async (req, res, next) =>{
         }
     }
 }
-export const getLogin = (req, res) => res.render("Login",{pageTitle:"Login"});
+export const getLogin = (req, res) => res.render("login",{pageTitle:"Login"});
 export const postLogin = passport.authenticate('local', {
     failureRedirect: routes.login,
     successRedirect: routes.home
@@ -38,7 +38,7 @@ export const postLogin = passport.authenticate('local', {
 export const githubLogin = passport.authenticate('github');
 
 export const githubLoginCallback = async (_, __, profile, cb) =>{
-    const { _json: {id, avatar_url,name, email}} = profile;
+    const { _json: {id, avatar_url:avatarUrl,name, email}} = profile;
     try{
         const user = await User.findOne({email});
         if(user){
@@ -50,7 +50,7 @@ export const githubLoginCallback = async (_, __, profile, cb) =>{
                 email,
                 name,
                 githubId:id,
-                avatarUrl: avatar_url
+                avatarUrl
             });
             return cb(null, newUser);
         }

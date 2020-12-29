@@ -6,10 +6,10 @@ import Comment from "../models/Comment";
 export const home = async (req, res) => {
   try {
     const videos = await Video.find({}).sort({ _id: -1 });
-    res.render("Home", { pageTitle: "Home", videos });
+    res.render("home", { pageTitle: "Home", videos });
   } catch (error) {
     console.log(error);
-    res.render("Home", { pageTitle: "Home", videos: [] });
+    res.render("home", { pageTitle: "Home", videos: [] });
   }
 };
 export const search = async(req, res) => {
@@ -22,7 +22,7 @@ export const search = async(req, res) => {
   }catch(error){
     console.log(error);
   }
-  res.render("Search", { pageTitle: "Search", searchingBy, videos });
+  res.render("search", { pageTitle: "Search", searchingBy, videos });
 };
 // VIDEOS
 export const getUpload = (req, res) =>
@@ -63,7 +63,7 @@ export const getEditVideo = async (req, res) => {
     if(`${video.creator}` !==`${ req.user.id}`){
       throw Error();
     } else {
-      res.render("EditVideo", { pageTitle: `Edit ${video.title}`, video });
+      res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
     }
   } catch (error) {
     res.redirect(routes.home);
