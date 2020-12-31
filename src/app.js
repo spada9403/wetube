@@ -21,7 +21,9 @@ const CookieStore = MongoStore(session);
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: false
+}));
 app.set("view engine","pug");
 app.set("views",path.join(__dirname,"views"))
 app.use("/static", express.static(path.join(__dirname,"static")));
